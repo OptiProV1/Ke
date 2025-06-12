@@ -1,115 +1,91 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>مولد أكواد تفعيل - OptiEsp-v2 CS:GO 2</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #f0f0f0;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      color: #00ff99;
-      margin-bottom: 0.2em;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #aaa;
-      margin: 5px 0;
-    }
-    header p.price {
-      color: #00ff99;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    main {
-      width: 100%;
-      max-width: 600px;
-      background: #1e1e1e;
-      border-radius: 10px;
-      padding: 20px 30px;
-      box-shadow: 0 0 15px #00ff99aa;
-    }
-    h2 {
-      color: #00ff99;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    ul.codes-list {
-      list-style: none;
-      padding: 0;
-      max-height: 300px;
-      overflow-y: auto;
-      border: 1px solid #00ff99;
-      border-radius: 5px;
-      background: #121212;
-    }
-    ul.codes-list li {
-      padding: 8px 12px;
-      border-bottom: 1px solid #00ff99;
-      font-family: monospace;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      cursor: text;
-      user-select: all;
-    }
-    ul.codes-list li:last-child {
-      border-bottom: none;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #555;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>توليد أكواد OptiEsp-v2 CS:GO 2</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    padding: 20px;
+    background: #121212;
+    color: #eee;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 10px;
+    color: #4caf50;
+  }
+  #codeDisplay {
+    margin: 20px auto;
+    font-size: 24px;
+    background: #222;
+    padding: 15px 20px;
+    width: fit-content;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    user-select: all;
+  }
+  button {
+    margin: 10px 5px;
+    padding: 10px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #4caf50;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  #priceInfo {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #aaa;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>مولد أكواد تفعيل</h1>
-    <p>لبرنامج <strong>OptiEsp-v2 CS:GO 2</strong></p>
-    <p class="price">سعر كود التفعيل الواحد = 25$ فقط</p>
-  </header>
-  <main>
-    <h2>الأكواد المتاحة الآن</h2>
-    <ul class="codes-list">
-      <li>AVBY-PBP4-UPUR-MRWX</li>
-      <li>AC1K-IXIH-IN00-DGTK</li>
-      <li>NR6N-C3YJ-UQ9N-FY9P</li>
-      <li>JSCK-GGGG-3JC5-8CKR</li>
-      <li>RY8Q-A7F7-DH8P-ZC8I</li>
-      <li>NRH2-80RZ-DJ7O-PKLM</li>
-      <li>4MVZ-WKDC-KHYV-YFSM</li>
-      <li>866F-8AX7-DMI1-UBAS</li>
-      <li>FS7G-84CD-D128-97K4</li>
-      <li>4C75-L2BR-DH4O-V3MP</li>
-      <li>ORT2-QR3P-264M-5BZ2</li>
-      <li>36HT-NTHK-H84B-KFQZ</li>
-      <li>OJUS-WPDX-NSMP-FT05</li>
-      <li>7FDL-67PM-NU0N-0HR9</li>
-      <li>V40R-VSYO-Y8N3-VQIF</li>
-      <li>ZY07-HMPR-PGXQ-KSOQ</li>
-      <li>N408-9SB8-XAN8-R2I9</li>
-      <li>DXZM-A93R-RM6A-GZQD</li>
-      <li>WK9X-SZI8-I2E3-4CWZ</li>
-      <li>9CB4-K2XN-6Q3K-526R</li>
-    </ul>
-  </main>
-  <footer>
-    © 2025 OptiEsp-v2 CS:GO 2 | جميع الحقوق محفوظة
-  </footer>
+
+<h1>موقع توليد أكواد OptiEsp-v2 CS:GO 2</h1>
+<p id="priceInfo">سعر كود واحد = 25$</p>
+
+<button id="generateBtn">توليد كود جديد</button>
+<button id="printBtn">طباعة الكود</button>
+
+<p id="codeDisplay">اضغط على "توليد كود جديد" للحصول على كود</p>
+
+<script src="codes.js"></script>
+<script>
+  const generateBtn = document.getElementById('generateBtn');
+  const printBtn = document.getElementById('printBtn');
+  const codeDisplay = document.getElementById('codeDisplay');
+
+  generateBtn.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * codes.length);
+    const code = codes[randomIndex];
+    codeDisplay.textContent = code;
+  });
+
+  printBtn.addEventListener('click', () => {
+    if (codeDisplay.textContent && codeDisplay.textContent !== "اضغط على \"توليد كود جديد\" للحصول على كود") {
+      const printWindow = window.open('', '', 'width=300,height=200');
+      printWindow.document.write('<html><head><title>طباعة الكود</title></head><body style="font-family: Arial; font-size: 24px; text-align:center; padding:20px;">');
+      printWindow.document.write('<h2>كود التفعيل</h2>');
+      printWindow.document.write('<p style="border: 1px solid #000; padding: 15px; display:inline-block;">' + codeDisplay.textContent + '</p>');
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+      printWindow.close();
+    } else {
+      alert('يرجى توليد كود أولاً قبل الطباعة.');
+    }
+  });
+</script>
+
 </body>
 </html>
