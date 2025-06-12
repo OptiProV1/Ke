@@ -1,133 +1,108 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8" />
-    <title>مولد أكواد التفعيل</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
-    <style>
-        /* Reset */
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Cairo', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            color: #fff;
-            text-align: center;
-        }
-        h1 {
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-        }
-        button {
-            background-color: #ff7e5f;
-            border: none;
-            color: white;
-            padding: 14px 28px;
-            margin: 10px;
-            font-size: 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255,126,95,0.5);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            user-select: none;
-            min-width: 140px;
-        }
-        button:hover {
-            background-color: #feb47b;
-            box-shadow: 0 6px 20px rgba(254,180,123,0.7);
-        }
-        #codeBox {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            font-size: 26px;
-            font-weight: 600;
-            padding: 20px 40px;
-            margin-top: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            min-width: 320px;
-            letter-spacing: 2px;
-            direction: ltr;
-            user-select: all;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        #codeBox.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Print styles */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printArea, #printArea * {
-                visibility: visible;
-            }
-            #printArea {
-                position: absolute;
-                left: 20px;
-                top: 40px;
-                text-align: left;
-                font-size: 14pt;
-                color: black;
-                background: white;
-                padding: 10px 15px;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                width: fit-content;
-                direction: ltr;
-                letter-spacing: 1.5px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مولد أكواد تفعيل - OptiEsp-v2 CS:GO 2</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #00ff99;
+      margin-bottom: 0.2em;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+    main {
+      width: 100%;
+      max-width: 600px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 0 15px #00ff99aa;
+    }
+    h2 {
+      color: #00ff99;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    ul.codes-list {
+      list-style: none;
+      padding: 0;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #00ff99;
+      border-radius: 5px;
+      background: #121212;
+    }
+    ul.codes-list li {
+      padding: 8px 12px;
+      border-bottom: 1px solid #00ff99;
+      font-family: monospace;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      cursor: text;
+      user-select: all;
+    }
+    ul.codes-list li:last-child {
+      border-bottom: none;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <h1>مولد أكواد التفعيل</h1>
-    <div>
-        <button onclick="generateCode()">توليد كود</button>
-        <button onclick="printCode()">طباعة الكود</button>
-    </div>
-
-    <div id="codeBox" aria-live="polite" aria-atomic="true"></div>
-    <div id="printArea" style="display:none;"></div>
-
-    <script src="codes.js"></script>
-    <script>
-        function generateCode() {
-            if (codes.length === 0) {
-                alert("انتهت جميع الأكواد!");
-                return;
-            }
-            const index = Math.floor(Math.random() * codes.length);
-            const code = codes.splice(index, 1)[0];
-            const codeBox = document.getElementById("codeBox");
-            codeBox.textContent = code;
-            document.getElementById("printArea").textContent = code;
-            codeBox.classList.add("visible");
-        }
-
-        function printCode() {
-            const code = document.getElementById("codeBox").textContent;
-            if (!code) {
-                alert("يرجى توليد كود أولاً.");
-                return;
-            }
-            const printArea = document.getElementById("printArea");
-            printArea.style.display = "block";
-            window.print();
-            printArea.style.display = "none";
-        }
-    </script>
+  <header>
+    <h1>مولد أكواد تفعيل</h1>
+    <p>لبرنامج <strong>OptiEsp-v2 CS:GO 2</strong></p>
+  </header>
+  <main>
+    <h2>الأكواد المتاحة الآن</h2>
+    <ul class="codes-list">
+      <li>AVBY-PBP4-UPUR-MRWX</li>
+      <li>AC1K-IXIH-IN00-DGTK</li>
+      <li>NR6N-C3YJ-UQ9N-FY9P</li>
+      <li>JSCK-GGGG-3JC5-8CKR</li>
+      <li>RY8Q-A7F7-DH8P-ZC8I</li>
+      <li>NRH2-80RZ-DJ7O-PKLM</li>
+      <li>4MVZ-WKDC-KHYV-YFSM</li>
+      <li>866F-8AX7-DMI1-UBAS</li>
+      <li>FS7G-84CD-D128-97K4</li>
+      <li>4C75-L2BR-DH4O-V3MP</li>
+      <li>ORT2-QR3P-264M-5BZ2</li>
+      <li>36HT-NTHK-H84B-KFQZ</li>
+      <li>OJUS-WPDX-NSMP-FT05</li>
+      <li>7FDL-67PM-NU0N-0HR9</li>
+      <li>V40R-VSYO-Y8N3-VQIF</li>
+      <li>ZY07-HMPR-PGXQ-KSOQ</li>
+      <li>N408-9SB8-XAN8-R2I9</li>
+      <li>DXZM-A93R-RM6A-GZQD</li>
+      <li>WK9X-SZI8-I2E3-4CWZ</li>
+      <li>9CB4-K2XN-6Q3K-526R</li>
+    </ul>
+  </main>
+  <footer>
+    © 2025 OptiEsp-v2 CS:GO 2 | جميع الحقوق محفوظة
+  </footer>
 </body>
 </html>
