@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>مولد أكواد التفعيل</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+        button {
+            background-color: #ff7e5f;
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,126,95,0.5);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+            min-width: 140px;
+        }
+        button:hover {
+            background-color: #feb47b;
+            box-shadow: 0 6px 20px rgba(254,180,123,0.7);
+        }
+        #codeBox {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 26px;
+            font-weight: 600;
+            padding: 20px 40px;
+            margin-top: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            min-width: 320px;
+            letter-spacing: 2px;
+            direction: ltr;
+            user-select: all;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        #codeBox.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Print styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+            #printArea {
+                position: absolute;
+                left: 20px;
+                top: 40px;
+                text-align: left;
+                font-size: 14pt;
+                color: black;
+                background: white;
+                padding: 10px 15px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                width: fit-content;
+                direction: ltr;
+                letter-spacing: 1.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>مولد أكواد التفعيل</h1>
+    <div>
+        <button onclick="generateCode()">توليد كود</button>
+        <button onclick="printCode()">طباعة الكود</button>
+    </div>
+
+    <div id="codeBox" aria-live="polite" aria-atomic="true"></div>
+    <div id="printArea" style="display:none;"></div>
+
+    <script src="codes.js"></script>
+    <script>
+        function generateCode() {
+            if (codes.length === 0) {
+                alert("انتهت جميع الأكواد!");
+                return;
+            }
+            const index = Math.floor(Math.random() * codes.length);
+            const code = codes.splice(index, 1)[0];
+            const codeBox = document.getElementById("codeBox");
+            codeBox.textContent = code;
+            document.getElementById("printArea").textContent = code;
+            codeBox.classList.add("visible");
+        }
+
+        function printCode() {
+            const code = document.getElementById("codeBox").textContent;
+            if (!code) {
+                alert("يرجى توليد كود أولاً.");
+                return;
+            }
+            const printArea = document.getElementById("printArea");
+            printArea.style.display = "block";
+            window.print();
+            printArea.style.display = "none";
+        }
+    </script>
+</body>
+</html>
